@@ -371,7 +371,7 @@ public class WikiBatiz {
 
     public static void PanelAdministrador() {
         int contrasenaIngresada = 0;
-        int contrasenaEsperada = -2310;
+        int contrasenaEsperada = Hola;
         System.out.println("Ingresa la contraseña");
         for (int i = 0; i < 3; i++) {
             Separacion();
