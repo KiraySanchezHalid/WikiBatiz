@@ -109,7 +109,6 @@ public class WikiBatiz {
             return eleccion;
         }
         return 0;
-        l
     }
 
     static String[] opcionesDeportivas = {
