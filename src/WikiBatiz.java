@@ -164,7 +164,7 @@ public class WikiBatiz {
                     " \u255A\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255D \n"
             ,
          //inscripciones a actividades
-        "Realiza tus inscripciones en https://forms.gle./xbSYFKxs5oMV5eCG9",
+        " Para realizar tus inscripciones en https://forms.gle./xbSYFKxs5oMV5eCG9",
          //Profesores titulares
         "[Actividades Deportivas] \n" +
             " Atletismo: Profa. Alma Yadira Quintanar Camacho \n " +
@@ -186,8 +186,8 @@ public class WikiBatiz {
     };
     static String[] opcionesTutorias = {
         "1. Consultar horarios",
-        "2. opcion 2",
-        "3. opcion 3",
+        "2. Consultar profesores",
+        "3. Material de estudio",
         "4. Regresar al menu inicial"
     };
     static String[] mensajeTutorias = {
@@ -197,7 +197,7 @@ public class WikiBatiz {
         "Espera..."
     };
     static String[] opcionesEventos = {
-        "1. opcion 1",
+        "1. Calendario de eventos",
         "2. opcion 2",
         "3. opcion 3",
         "4. Regresar al menu inicial"
@@ -209,16 +209,19 @@ public class WikiBatiz {
         "Espera..."
     };
     static String[] opcionesAlumnos = {
-        "1. opcion 1",
-        "2. opcion 2",
+        "1. Informacion de profesores",
+        "2. Horarios de profesores",
         "3. opcion 3",
         "4. Regresar al menu inicial"
     };
     static String[] mensajeAlumnos = {
-        "1. mensaje 1",
-        "2. mensaje 2",
-        "3. mensaje 3",
-        "Espera..."
+        // Información profesores
+                "Nombre profesor: \n" +
+                        "Materia(s) que imparte: \n",
+
+                "2. mensaje 2",
+                "3. mensaje 3",
+                "Espera..."
     };
     static String[] opcionesTramites = {
         "1. Solicitud de Dictamen",
