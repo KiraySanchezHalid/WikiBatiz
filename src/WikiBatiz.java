@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class WikiBatiz {
@@ -374,7 +375,7 @@ public class WikiBatiz {
 
     public static void PanelAdministrador() {
         int contrasenaIngresada = 0;
-        int contrasenaEsperada = Hola;
+        int contrasenaEsperada = 2025090538;
         System.out.println("Ingresa la contraseña");
         for (int i = 0; i < 3; i++) {
             Separacion();
@@ -428,8 +429,16 @@ public class WikiBatiz {
     }
 
     public static int LeerNum() {
+        int num = 0;
         Scanner leer = new Scanner(System.in);
-        int num = leer.nextInt();
+        try {
+            num = leer.nextInt();
+            return num;
+        } catch (InputMismatchException e) {
+            Separacion();
+            System.out.println("Error, no haz ingresado un numero");
+            leer.next();
+        }
         return num;
     }
 
