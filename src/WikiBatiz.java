@@ -335,16 +335,68 @@ public class WikiBatiz {
         }
     }
 
+    static String[] semestres = {
+            "Primer semestre",
+            "Segundo semestre",
+            "Tercer semestre",
+            "Cuarto semestre",
+            "Quinto semestre",
+            "Sexto semestre"
+    };
+
     public static void MenuAlumnos() {
-        int mostrar = menu(opcionesAlumnos);
+        int mostrar = menu(semestres);
         switch (mostrar) {
-            case 0:
-                System.out.println("error");
+            case 1:
+                Semestres();
+                break;
+            case 2:
+                Semestres();
+                break;
+            case 3:
+                Semestres();
+                break;
+            case 4:
+                Semestres();
+                break;
+            case 5:
+                Semestres();
+                break;
+            case 6:
+                Semestres();
                 break;
             default:
-                System.out.println(mensajeAlumnos[mostrar - 1]);
+                System.out.println("Error");
                 break;
         }
+    }
+
+    static void Semestres(String[] grupos, String[] maestros, String[] horarios){
+        int seleccionGrupos = menu(grupos);
+        switch (seleccionGrupos){
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+
+        }
+
     }
 
     public static void MenuEventos() {
