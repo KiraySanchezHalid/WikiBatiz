@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class WikiBatiz {
 
-    static boolean activo = true;
+    static boolean programaActivo = true;
     static boolean reinicio = false;
 
     public static void main(String[] args) {
@@ -14,25 +14,26 @@ public class WikiBatiz {
             if (reinicio) {
                 System.out.println("Regresando al menu inicial...");
                 reinicio = false;
-            } else {
+            }
+            if(programaActivo && !reinicio){
                 System.out.println("Deseas volver al menu inicial?");
                 System.out.println("1.Si 2.No");
                 String[] a = {"1. Si", "2. No"};
                 Separacion();
-                int RepetirConsulta = NumRango(a, 1, 2);
+                int RepetirConsulta = SeleccionMenu(a, 1, 2);
                 if (RepetirConsulta == 2) {
-                    activo = false;
-                    System.out.println("Gracias por usar WikiBatiz");
-                    Separacion();
+                    programaActivo = false;
                 }
             }
-        } while (activo);
+        } while (programaActivo);
+        System.out.println("Gracias por usar WikiBatiz");
+        Separacion();
     }
 
     public static void SeleccionTipoUsuario() {
-        String[] usuarios = {"1. Administrador", "2. Usuario"};
-        MostrarOpciones("Escoge tu tipo de usuario", usuarios);
-        int usuarioSeleccionado = NumRango(usuarios, 1, usuarios.length);
+        String[] usuarios = {"1. Administrador", "2. Usuario", "3.Terminar programa"};
+        MostrarOpciones("Escoge tu tipo de usuario o terminar el programa", usuarios);
+        int usuarioSeleccionado = SeleccionMenu(usuarios, 1, usuarios.length);
         Separacion();
         System.out.println("Has seleccionado " + usuarios[usuarioSeleccionado - 1]);
         Separacion();
@@ -44,6 +45,9 @@ public class WikiBatiz {
                 usuarioActivo = true;
                 ProcesoUsuario();
                 break;
+            case 3:
+                programaActivo = false;
+                return;
             default:
                 System.out.println("Ha ocurrido un error, volviendo al menu inicial");
                 reinicio = true;
@@ -62,7 +66,7 @@ public class WikiBatiz {
     public static void ProcesoUsuario() {
         do {
             MostrarOpciones("Selecciona tu consulta", opcionesMenuUsuario);
-            int GotoMenu = NumRango(opcionesMenuUsuario, 1, opcionesMenuUsuario.length);
+            int GotoMenu = SeleccionMenu(opcionesMenuUsuario, 1, opcionesMenuUsuario.length);
             switch (GotoMenu) {
                 case 1:
                     MenuActividadesDeportivasCulturales();
@@ -93,7 +97,7 @@ public class WikiBatiz {
                 System.out.println("1.Si 2.No");
                 String[] a = {"1. Si", "2. No"};
                 Separacion();
-                int RepetirConsulta = NumRango(a, 1, 2);
+                int RepetirConsulta = SeleccionMenu(a, 1, 2);
                 if (RepetirConsulta == 2) {
                     usuarioActivo = false;
                 }
@@ -103,7 +107,7 @@ public class WikiBatiz {
 
     public static int menu(String[] opciones) {
         MostrarOpciones("Selecciona una opcion", opciones);
-        int eleccion = NumRango(opciones, 1, opciones.length);
+        int eleccion = SeleccionMenu(opciones, 1, opciones.length);
         if (eleccion >= opciones.length) {
             VienedeUnMenu = true;
         } else {
@@ -119,19 +123,19 @@ public class WikiBatiz {
         "4. Regresar al menu inicial"};
     static String[] mensajeDeportivas = {
          //horarios
-            " \u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557 \n" +
-                    " \u2551   Horarios      de    Actividades     Deportivas      y      Culturales     \u2551 \n" +
-                    " \u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563 \n" +
-                    " \u2551 Actividades \u2551 Lunes     \u2551 Martes     \u2551 Mi\u00E9rcoles  \u2551 Jueves     \u2551 Viernes    \u2551 \n" +
-                    " \u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563 \n" +
-                    " \u2551 Atletismo   \u255110:00-13:00\u255109:00-13:00 \u25519:00-13:00  \u25519:00-13:00  \u25519:00-13:00  \u2551 \n" +
+                    " ╔═════════════════════════════════════════════════════════════════════════════╗ \n" +
+                    " ║   Horarios      de    Actividades     Deportivas      y      Culturales     ║ \n" +
+                    " ╠═════════════╦═══════════╦════════════╦════════════╦════════════╦════════════╣ \n" +
+                    " ║ Actividades \u2551 Lunes     \u2551 Martes     \u2551 Mi\u00E9rcoles  \u2551 Jueves     \u2551 Viernes    \u2551 \n" +
+                    " ╠═════════════╬═══\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563 \n" +
+                    " ║ Atletismo   ║10:00-13:00║09:00-13:00 ║9:00-13:00  ║9:00-13:00  ║9:00-13:00  ║ \n" +
                     " \u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563 \n" +
                     " \u2551 Basquetbol  \u255112:00-16:00\u255112:00-16:00 \u255112:00-16:00 \u255112:00-16:00 \u255112:00-16:00 \u2551 \n" +
                     " \u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563 \n" +
                     " \u2551 Volibol     \u255112:00-16:00\u255112:00-16:00 \u255112:00-16:00 \u255112:00-16:00 \u255112:00-15:00 \u2551 \n" +
                     " \u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563 \n" +
-                    " \u2551 Futbol      \u255112:00-15:00\u255112:00-15:00 \u255112:00-15:00 \u255112:00-15:00 \u255112:00-15:00 \u2551 \n" +
-                    " \u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563 \n" +
+                    " ║ Futbol      \u255112:00-15:00\u255112:00-15:00 \u255112:00-15:00 \u255112:00-15:00 \u255112:00-15:00 \u2551 \n" +
+                    " ╠═════════\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563 \n" +
                     " \u2551 Tae Kwon Do \u2551           \u255111:00-13:00 \u2551            \u255111:00-13:00 \u2551            \u2551 \n" +
                     " \u2551             \u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256C\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563 \n" +
                     " \u2551             \u2551           \u255115:00-17:00 \u2551            \u255115:00-17:00 \u2551            \u2551 \n" +
@@ -345,57 +349,6 @@ public class WikiBatiz {
     };
 
     public static void MenuAlumnos() {
-        int mostrar = menu(semestres);
-        switch (mostrar) {
-            case 1:
-                Semestres();
-                break;
-            case 2:
-                Semestres();
-                break;
-            case 3:
-                Semestres();
-                break;
-            case 4:
-                Semestres();
-                break;
-            case 5:
-                Semestres();
-                break;
-            case 6:
-                Semestres();
-                break;
-            default:
-                System.out.println("Error");
-                break;
-        }
-    }
-
-    static void Semestres(String[] grupos, String[] maestros, String[] horarios){
-        int seleccionGrupos = menu(grupos);
-        switch (seleccionGrupos){
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            case 7:
-                break;
-            case 8:
-                break;
-            case 9:
-                break;
-            case 10:
-                break;
-
-        }
 
     }
 
@@ -460,7 +413,7 @@ public class WikiBatiz {
         Separacion();
     }
 
-    public static int NumRango(String[] opciones, int minimo, int maximo) {
+    public static int SeleccionMenu(String[] opciones, int minimo, int maximo) {
         int numIngresado = LeerNum();
         boolean bandera = (numIngresado < minimo) || (numIngresado > maximo);
         while (bandera) {
@@ -496,23 +449,37 @@ public class WikiBatiz {
 
     public static void Separacion() {
         for (int i = 0; i < 150; i++) {
-            System.out.print("_");
+            System.out.print("═");
         }
         System.out.println('\n');
     }
 
     public static void ImprimirNombre() {
-        System.out.println(" ____________________________________________________________________________________________________________ ");
-        System.out.println("|                                                                                                            |");
-        System.out.println("|      :::       ::: ::::::::::: :::    ::: ::::::::::: :::::::::      ::: ::::::::::: ::::::::::: ::::: :::: |");
-        System.out.println("|     :+:       :+:     :+:     :+:   :+:      :+:     :+:    :+:   :+: :+:   :+:         :+:          :+:   |");
-        System.out.println("|    +:+       +:+     +:+     +:+  +:+       +:+     +:+    +:+  +:+   +:+  +:+         +:+         +:+     |");
-        System.out.println("|   +#+  +:+  +#+     +#+     +#++:++        +#+     +#++:++#+  +#++:++#++: +#+         +#+        +#+       |");
-        System.out.println("|  +#+ +#+#+ +#+     +#+     +#+  +#+       +#+     +#+    +#+ +#+     +#+ +#+         +#+       +#+         |");
-        System.out.println("|  #+#+# #+#+#      #+#     #+#   #+#      #+#     #+#    #+# #+#     #+# #+#         #+#      #+#           |");
-        System.out.println("|  ###   ###   ########### ###    ### ########### #########  ###     ### ###     ########### #########       |");
-        System.out.println("|                                                                                                            |");
-        System.out.println("|____________________________________________________________________________________________________________|");
+        System.out.println("╔════════════════════════════════════════════════════════════════════════════╗");
+        System.out.println("║                                                                            ║");
+        System.out.println("║    ██╗    ██╗ ██╗ ██╗  ██╗ ██╗ ██████╗   █████╗  ████████╗ ██╗ ███████╗    ║");
+        System.out.println("║    ██║    ██║ ██║ ██║ ██╔╝ ██║ ██╔══██╗ ██╔══██╗ ╚══██╔══╝ ██║ ╚══███╔╝    ║");
+        System.out.println("║    ██║ █╗ ██║ ██║ █████╔╝  ██║ ██████╔╝ ███████║    ██║    ██║   ███╔╝     ║");
+        System.out.println("║    ██║███╗██║ ██║ ██╔═██╗  ██║ ██╔══██╗ ██╔══██║    ██║    ██║  ███╔╝      ║");
+        System.out.println("║    ╚███╔███╔╝ ██║ ██║  ██╗ ██║ ██████╔╝ ██║  ██║    ██║    ██║ ███████╗    ║");
+        System.out.println("║     ╚══╝╚══╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝ ╚═════╝  ╚═╝  ╚═╝    ╚═╝    ╚═╝ ╚══════╝    ║");
+        System.out.println("║                                                                            ║");
+        System.out.println("╚════════════════════════════════════════════════════════════════════════════╝");
         System.out.println('\n');
+    }
+
+    static void ImprimirSalida() {
+        System.out.println(" ██████╗ ██████╗  █████╗  ██████╗██╗ █████╗ ███████╗    ██████╗  ██████╗ ██████╗     ██╗   ██╗███████╗ █████╗ ██████╗ ");
+        System.out.println("██╔════╝ ██╔══██╗██╔══██╗██╔════╝██║██╔══██╗██╔════╝    ██╔══██╗██╔═══██╗██╔══██╗    ██║   ██║██╔════╝██╔══██╗██╔══██╗");
+        System.out.println("██║  ███╗██████╔╝███████║██║     ██║███████║███████╗    ██████╔╝██║   ██║██████╔╝    ██║   ██║███████╗███████║██████╔╝");
+        System.out.println("██║   ██║██╔══██╗██╔══██║██║     ██║██╔══██║╚════██║    ██╔═══╝ ██║   ██║██╔══██╗    ██║   ██║╚════██║██╔══██║██╔══██╗");
+        System.out.println("╚██████╔╝██║  ██║██║  ██║╚██████╗██║██║  ██║███████║    ██║     ╚██████╔╝██║  ██║    ╚██████╔╝███████║██║  ██║██║  ██║");
+        System.out.println(" ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝╚═╝  ╚═╝╚══════╝    ╚═╝      ╚═════╝ ╚═╝  ╚═╝     ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝");
+        System.out.println("            ██╗    ██╗ ██╗ ██╗  ██╗ ██╗ ██████╗   █████╗  ████████╗ ██╗ ███████╗    ");
+        System.out.println("            ██║    ██║ ██║ ██║ ██╔╝ ██║ ██╔══██╗ ██╔══██╗ ╚══██╔══╝ ██║ ╚══███╔╝    ");
+        System.out.println("            ██║ █╗ ██║ ██║ █████╔╝  ██║ ██████╔╝ ███████║    ██║    ██║   ███╔╝     ");
+        System.out.println("            ██║███╗██║ ██║ ██╔═██╗  ██║ ██╔══██╗ ██╔══██║    ██║    ██║  ███╔╝      ");
+        System.out.println("            ╚███╔███╔╝ ██║ ██║  ██╗ ██║ ██████╔╝ ██║  ██║    ██║    ██║ ███████╗    ");
+        System.out.println("             ╚══╝╚══╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝ ╚═════╝  ╚═╝  ╚═╝    ╚═╝    ╚═╝ ╚══════╝    ");
     }
 }
